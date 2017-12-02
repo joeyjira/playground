@@ -25,8 +25,16 @@ class Array
 
         return result
     end 
+
+    def my_any(&prc)
+        self.my_each do |el|
+            return true if prc.call(el)
+        end 
+
+        return false 
+    end 
 end
 
 array = [1, 2, 3, 4]
 
-puts array.my_select { |el| el.even? }
+puts array.my_any { |el| el == 3 }
