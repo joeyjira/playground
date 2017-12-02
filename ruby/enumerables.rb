@@ -93,9 +93,19 @@ class Array
 
         return result 
     end
+
+    def self.factors(num)
+        result = []
+
+        (1..num).each do |el|
+            result.push(el) if num % el == 0
+        end
+
+        return result
+    end
 end
 
 array = [1, 2, 3, 4]
 a = [ "a", "b", "c", "d" ]
 
-puts "#{[ "a", "b", "c" ].my_reverse}"
+puts "#{Array.factors(10)}"
