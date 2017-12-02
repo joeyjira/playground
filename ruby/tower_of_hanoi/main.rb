@@ -3,6 +3,9 @@ class Tower
         @tower = [[1,2,3], [], []]
     end
 
+    def move
+    end
+
     def render
         puts('_____   _____   _____')
     end 
