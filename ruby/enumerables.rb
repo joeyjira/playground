@@ -83,9 +83,19 @@ class Array
 
         return result
     end
+
+    def my_reverse
+        result = []
+
+        self.my_each do |el|
+            result.unshift(el)
+        end 
+
+        return result 
+    end
 end
 
 array = [1, 2, 3, 4]
 a = [ "a", "b", "c", "d" ]
 
-puts "#{a.my_join("$")}"
+puts "#{[ "a", "b", "c" ].my_reverse}"
