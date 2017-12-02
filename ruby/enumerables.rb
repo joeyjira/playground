@@ -66,12 +66,15 @@ class Array
 
         return result
     end 
+
+    def my_rotate(default = 1)
+        first_half = self.drop(default % self.length)
+        second_half = self.take(default % self.length)
+        return first_half + second_half
+    end
 end
 
 array = [1, 2, 3, 4]
-a = [ 4, 5, 6 ]
-b = [ 7, 8, 9 ]
-c = [10, 11, 12]
-d = [13, 14, 15]
+a = [ "a", "b", "c", "d" ]
 
-puts "#{a.my_zip([1,2], [8])}"
+puts "#{a.my_rotate(15)}"
