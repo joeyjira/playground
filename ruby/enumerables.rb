@@ -33,8 +33,25 @@ class Array
 
         return false 
     end 
+
+    def my_flatten
+        return [] if self.length == 0
+        
+        result = []
+
+        self.my_each do |el|
+            if el.is_a? Array
+                sub_array = el.my_flatten
+                result += sub_array
+            else
+                result.push(el)
+            end
+        end
+
+        return result
+    end 
 end
 
 array = [1, 2, 3, 4]
 
-puts array.my_any { |el| el == 3 }
+puts "#{[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten}"
