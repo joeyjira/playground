@@ -94,18 +94,38 @@ class Array
         return result 
     end
 
-    def self.factors(num)
-        result = []
+    def bubble_sort!(&prc)
+        prc ||= Proc.new { |num1, num2| num1 <=> num2 }
+        sorted = false
 
-        (1..num).each do |el|
-            result.push(el) if num % el == 0
+        until sorted
+            sorted = true
+            self.each_index do |idx|
+                break if self[idx + 1] == nil
+                if prc.call(self[idx], self[idx + 1]) == 1
+                    self[idx], self[idx + 1] = self[idx + 1], self[idx]
+                    sorted = false
+                end 
+            end 
         end
 
-        return result
-    end
+        return self
+    end 
 end
+
+def factors(num)
+    result = []
+
+    (1..num).each do |el|
+        result.push(el) if num % el == 0
+    end
+
+    return result
+end
+
 
 array = [1, 2, 3, 4]
 a = [ "a", "b", "c", "d" ]
+disarray =[3, 7, 1, 2, 9, 1, 3, 8, 4, 5]
 
-puts "#{Array.factors(10)}"
+puts "#{ disarray.bubble_sort! { |num1, num2| num2 <=> num1 } }"
