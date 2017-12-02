@@ -16,6 +16,15 @@ class Array
 
         return result
     end
+
+    def my_reject(&prc)
+        result = [] 
+        self.my_each do |el|
+            result.push(el) unless prc.call(el)
+        end 
+
+        return result
+    end 
 end
 
 array = [1, 2, 3, 4]
