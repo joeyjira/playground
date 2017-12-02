@@ -72,9 +72,20 @@ class Array
         second_half = self.take(default % self.length)
         return first_half + second_half
     end
+
+    def my_join(default = "")
+        result = ""
+        self.each_index do |idx|
+            result += self[idx].to_s
+            break if idx == self.length - 1
+            result += default
+        end
+
+        return result
+    end
 end
 
 array = [1, 2, 3, 4]
 a = [ "a", "b", "c", "d" ]
 
-puts "#{a.my_rotate(15)}"
+puts "#{a.my_join("$")}"
