@@ -50,8 +50,28 @@ class Array
 
         return result
     end 
+
+    def my_zip(*arrays)
+        result = []
+
+        self.each_index do |idx1|
+            sub_array = []
+            sub_array.push(self[idx1])
+            arrays.each do |arr|
+                sub_array.push(arr[idx1])
+            end
+            result.push(sub_array) 
+            sub_array = []
+        end 
+
+        return result
+    end 
 end
 
 array = [1, 2, 3, 4]
+a = [ 4, 5, 6 ]
+b = [ 7, 8, 9 ]
+c = [10, 11, 12]
+d = [13, 14, 15]
 
-puts "#{[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten}"
+puts "#{a.my_zip([1,2], [8])}"
