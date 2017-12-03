@@ -1,8 +1,11 @@
+require "set"
+
 class Game
-    def initialize
-        @players = [1, 2]
+    def initialize(*players)
+        @players = players
         @fragment = ""
-        @dictionary = File.readlines("dictionary.txt")
+        words = File.readlines("dictionary.txt").map(&:chomp)
+        @dictionary = Set.new(words)
     end 
 
     def play_round
