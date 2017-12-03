@@ -123,7 +123,6 @@ def factors(num)
     return result
 end
 
-
 array = [1, 2, 3, 4]
 a = [ "a", "b", "c", "d" ]
 disarray =[3, 7, 1, 2, 9, 1, 3, 8, 4, 5]
