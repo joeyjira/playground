@@ -5,8 +5,11 @@ class Maze
 
     def find_start
         result = []
-        @maze.each_index do |line_index|
-            next unless line_index.include?("S")
+        @maze.each_index do |idx|
+            next unless @maze[idx].include?("S")
+            result.push(idx)
+            result.push (@maze[idx].index("S"))
         end 
+        result
     end
 end 
