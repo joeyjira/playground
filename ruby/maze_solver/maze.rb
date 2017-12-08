@@ -12,4 +12,14 @@ class Maze
         end 
         result
     end
+
+    def find_end
+        result = []
+        @maze.each_index do |idx|
+            next unless @maze[idx].include?("E")
+            result.push(idx)
+            result.push (@maze[idx].index("E"))
+        end 
+        result
+    end
 end 
