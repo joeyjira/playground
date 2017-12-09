@@ -22,4 +22,8 @@ class Maze
         end 
         result
     end
+
+    def valid_path?(point)
+        point == " "
+    end 
 end 
