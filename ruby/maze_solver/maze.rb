@@ -1,4 +1,14 @@
 class Maze
+    DELTA = [
+        [1, 0],
+        [0, 1],
+        [1, 1],
+        [-1, 0],
+        [0, -1],
+        [-1, -1],
+        [1, -1],
+        [-1, 1]
+    ]
     def initialize(path)
         @maze = File.readlines('maze.txt')
         @start = find_start
@@ -32,5 +42,9 @@ class Maze
     def trace_path
         @maze[@start[0]][@start[1]]
         @maze[@end[0]][@end[1]]
+    end 
+
+    def adjacent_path?(point)
+
     end 
 end 
