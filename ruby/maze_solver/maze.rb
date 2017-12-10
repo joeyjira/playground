@@ -1,6 +1,8 @@
 class Maze
     def initialize(path)
         @maze = File.readlines('maze.txt')
+        @start = find_start
+        @end = find_end
     end
 
     def find_start
@@ -25,5 +27,10 @@ class Maze
 
     def valid_path?(point)
         point == " "
+    end
+
+    def trace_path
+        @maze[@start[0]][@start[1]]
+        @maze[@end[0]][@end[1]]
     end 
 end 
