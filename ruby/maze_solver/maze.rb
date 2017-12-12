@@ -46,5 +46,23 @@ class Maze
 
     def adjacent_path?(point)
 
-    end 
+    end
+
+    def travel_path(path)
+      puts "Traveling path of #{path.inspect}..."
+      copy_map = deep_dup(@map)
+      path.each do |coords|
+        x, y = coords
+        point = copy_map[y][x]
+        if point == "X"
+          puts "This path back-tracks to #{x}, #{y}."
+        elsif point == "*"
+          puts "This path hits a wall at #{x}, #{y}."
+        else
+          copy_map[y][x] = "X"
+        end #end inner if else
+      end #end path.each
+
+      show_path(copy_map)
+    end
 end 
