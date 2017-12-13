@@ -65,4 +65,10 @@ class Maze
 
       show_path(copy_map)
     end
+
+    def show_path(map)
+      map.each do |line|
+        puts line.join("")
+      end
+    end
 end 
