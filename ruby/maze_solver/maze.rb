@@ -71,4 +71,18 @@ class Maze
         puts line.join("")
       end
     end
+
+      private
+
+    def deep_dup(item)
+      unless item.class == Array
+        item.dup
+      else
+        new_arr = []
+        item.each do |item|
+          new_arr << deep_dup(item)
+        end
+        new_arr
+      end
+    end
 end 
