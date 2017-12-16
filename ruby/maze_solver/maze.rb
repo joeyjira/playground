@@ -86,3 +86,13 @@ class Maze
       end
     end
 end 
+
+if __FILE__ == $PROGRAM_NAME
+  filename = ARGV[0] || "maze1.txt"
+  test_maze = MazeClasses::Maze.new(filename)
+  puts test_maze
+  puts "Start is at #{test_maze.start_ind}"
+  puts "End is at #{test_maze.end_ind}"
+  test_solver = MazeClasses::Maze_Solver.new(test_maze)
+  test_solver.solve
+end
