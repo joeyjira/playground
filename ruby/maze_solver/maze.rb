@@ -87,6 +87,13 @@ class Maze
     end
 end 
 
+class Maze_Solver
+    def initialize(maze)
+      @maze = maze
+      reset_values
+    end
+  end
+
 if __FILE__ == $PROGRAM_NAME
   filename = ARGV[0] || "maze1.txt"
   test_maze = MazeClasses::Maze.new(filename)
