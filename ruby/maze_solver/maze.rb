@@ -88,11 +88,23 @@ class Maze
 end 
 
 class Maze_Solver
-    def initialize(maze)
-      @maze = maze
-      reset_values
-    end
+  def initialize(maze)
+    @maze = maze
+    reset_values
   end
+
+  def find_distance(point)
+    p_x, p_y = point
+    final_x, final_y = @maze.find_end
+    ((p_x - final_x) + (p_y - final_y)).abs
+  end
+
+  def find_manhattan_estimate(point)
+    dist_to_end = find_distance(point)
+    dist_traveled = find_path(point).length
+    f = dist_to_end + dist_traveled
+  end
+end
 
 if __FILE__ == $PROGRAM_NAME
   filename = ARGV[0] || "maze1.txt"
