@@ -21,41 +21,26 @@ public class LoadImageApp {
 	}
 	
 	public void getPixels() {
+		int midWidth = width >> 1;
+		
 		for (int y = 0; y < height; y++) {
-			for(int x = 0; x < width; x++) {
-				counter++;
+			for(int x = midWidth - 100; x < midWidth + 100; x++) {
 				int p = img.getRGB(x, y);
 				int a = (p >> 24) & 0xff;
 				int r = (p >> 16) & 0xff;
 				int g = (p >> 8) & 0xff;
 				int b = p & 0xff;
 				
-				// set default colors
-//				if (r < 25 && g < 25 && b < 25) {
-//					// set blacks
-//					r = g = b = 0;
-//					p = (a << 24) | (r << 16) | (g << 8) | b;
-//					img.setRGB(x, y, p);
-//				} else 
-//				if ((r >= 100 && r <= 160) && 
-//						(g >= 20 && g <= 40) &&
-//						(b >= 100 && b <= 150)) {
-//					// set purples
-//					r = 147; 
-//					g = 32; 
-//					b = 142;
-//					p = (a << 24) | (r << 16) | (g << 8) | b;
-//					img.setRGB(x, y, p);
-//				} else 
-					if (
-							(r >= 90 && r <= 200) && 
-							(g >= 100 && g <= 240) && 
-							(b >= 120 && b <= 240)
-							) {
-					// set light blues
-					r = 0; 
-					g = 0; 
-					b = 0;
+				if (x < midWidth) {
+					r = g = b = 61;
+					p = (a << 24) | (r << 16) | (g << 8) | b;
+					img.setRGB(x, y, p);
+				}
+				
+				if (x > midWidth) {
+					r = 217; 
+					g = 131;
+					b = 59;
 					p = (a << 24) | (r << 16) | (g << 8) | b;
 					img.setRGB(x, y, p);
 				}
@@ -72,12 +57,12 @@ public class LoadImageApp {
 	}
 	
 	public static void main(String[] args) {
-		LoadImageApp app = new LoadImageApp("./res/BlackFrost.jpg");
+		LoadImageApp app = new LoadImageApp("./res/CharizardXY.png");
 		app.getPixels();
 		BufferedImage img = app.getImage();
 		try {
-			File f = new File("./res/NewFrost.jpg");
-			ImageIO.write(img, "jpg", f);
+			File f = new File("./res/NewCharizard.png");
+			ImageIO.write(img, "png", f);
 		} catch (IOException e) {
 			System.out.println(e);
 		}
