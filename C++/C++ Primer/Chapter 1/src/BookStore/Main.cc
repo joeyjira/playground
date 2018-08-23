@@ -2,10 +2,10 @@
 #include "Sales_item.h"
 
 int main() {
-  SalesItem book;
+  Sales_item item1, item2;
   // Read ISBN, number of copies sold, and sales price
-  std::cin >> book;
+  std::cin >> item1 >> item2;
   // Write ISBN, number of copies sold, total revenue, and average price
-  std::cout << book << std::endl;
+  std::cout << item1 + item2 << std::endl;
   return 0;
 }
