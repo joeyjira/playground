@@ -1,17 +1,27 @@
 #include <iostream>
-#include "Sales_item.h"
-
+#include <"Sales_item.h">
 int main() {
-  Sales_item item1, item2;
-  // Read ISBN, number of copies sold, and sales price
-  std::cin >> item1 >> item2;
-  // First check that item1 and item2 represent the same book
-  if (item1.isbn() == item2.isbn()) {
-    std::cout << item1 + item2 << std::endl;
-    return 0;   // Indicate success
+  Sales_item total;   // Variable to hold data for the next transaction
+  // Read the first transaction and ensure that there are data to process
+  if (std::cin >> total) {
+    Sales_item trans; // Variable to hold the running sum
+    // Read and process the remaining transactions
+    while (std::cin >> trans) {
+      // If we're still processing the same book
+      if (total.isbn() == trans.isbn())
+        total += trans; // Update the running total
+      else {
+        // Print result for the previous book
+        std::cout << total << std::endl;
+        total = trans;  // Total now refers to the next book
+      }
+    }
+    std::cout << total << std::endl;  // Print the last transaction
   } else {
-    std::cerr << "Data must refer to same ISBN"
-              << std::endl;
+    // No input! Warn the user
+    std::cerr << "No data?!" << std::endl;
     return -1;  // Indicate failure
   }
+
+  return 0;
 }
